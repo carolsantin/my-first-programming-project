@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aula: Carol</title>
+
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <div>
+                <label>combustion</label>
+                <input type="number" id="combustion" value="36">
+            </div>
+            <div>
+                    <label>reaction</label>
+                    <input type="number" id="reaction" value="118.8">
+                </div>
+                <button id="calculate" type="button">calcular</button>
+        </div>
+        <div>
+            <p>percentage: <span id="percentage">??</span></p>
+            <p>cYield: <span id="cYield">??</span></p>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+function solveProblem1(cCombustion, co2Yield) {
+    const c = 12
+    const o = 16
+    const CO2 = c + o * 2
+    const cYield = (cCombustion * CO2) / c
+    return {
+        percentage: (co2Yield * 100) / cYield,
+        cYield
+    }
+}
+
+function handleCalculate() {
+    const combustion = document.getElementById("combustion")
+    const reaction = document.getElementById("reaction")
+
+
+    const result1 = solveProblem1(combustion.value, reaction.value)
+
+    const percentage = document.getElementById("percentage")
+    percentage.innerText = result1.percentage
+
+    const cYield = document.getElementById("cYield")
+    cYield.innerText = result1.cYield
+}
+
+
+const calculate = document.getElementById("calculate")
+calculate.addEventListener("click", handleCalculate)
+</script>
+</html>
